@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<meta name=viewport content="width=device-width, initial-scale=1">
-	<title>SpeakEASY</title>
+    <meta charset="utf-8">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <title>SpeakEASY</title>
 </head>
+
 <body>
-	<p>Welcome</p>
-	<ol id="messages"></ol>
-	<form id="message-form" accept-charset="utf-8">
-		<input type="text" name="message" placeholder="Type your message" />
-		<button>Send Message</button>
-	</form>
-	<button id="send-location">Send Location</button>
-	<!-- Load in the socket.io library -->
-	<script src="/socket.io/socket.io.js"></script>
-	<!-- Include Jquery(v3.1.1) -->
-	<script src="/js/libs/jquery-3.1.1.min.js"></script>
-	<!-- Initiate a connection request -->
-	<script src="/js/index.js"></script>
+    <div>
+        <div id="users">
+        </div>
+    </div>
+    <div id="chat-main">
+        <ol id="messages"></ol>
+        <div id="chat-footer">
+            <form id="message-form" accept-charset="utf-8">
+                <input type="text" name="message" placeholder="Type your message" autofocus autocomplete="off"/>
+                <button>Send Message</button>
+            </form>
+            <button id="send-location">Send Location</button>
+        </div>
+    </div>
+    <!-- Load in the socket.io library -->
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- Include Jquery(v3.1.1) -->
+    <script src="/js/libs/jquery-3.1.1.min.js"></script>
+    <!-- Include Moment.js for client side function -->
+    <script src="/js/libs/moment.js"></script>
+    <!-- Initiate a connection request -->
+    <script src="/js/index.js"></script>
 </body>
+
 </html>
