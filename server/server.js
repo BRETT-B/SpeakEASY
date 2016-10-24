@@ -3,6 +3,7 @@ const http = require('http');
 const ex = require('express');
 const socketIO = require('socket.io');
 
+const {generateMessage} = require('./utils/message');
 const publicPath = path.join(__dirname, '../public');
 // Set up a environment variable for Heroku
 const port = process.env.PORT || 3000;
@@ -18,24 +19,13 @@ app.use(ex.static(publicPath));
 io.on('connection', (socket) => {
 	console.log('New user connected');
 	// Emit message to welcome user from Admin
-	socket.emit('newMessage', {
-		from: 'Admin',
-		text: 'Welcome to the SpeakEASY chat client',
-		timestamp: new Date().getTime()
-	});
+	socket.emit('newMessage', generateMessage('Admin', 'Welcome to SpeakEASY'));
 	// Emit message to all sockets that user joined, excluding that user
-	socket.broadcast.emit('newMessage', {
-		from: 'Admin',
-		text: 'New user joined',
-		timestamp: new Date().getTime()
-	});
-	socket.on('createMessage', (message) => {
+	socket.broadcast.emit('newMessage', generateMessage('Admin', 'New user joined'));
+	socket.on('createMessage', (message, callback) => {
 		console.log('createMessage', message);
-		io.emit('newMessage', {
-			from: message.from,
-			text: message.text,
-			timestamp: new Date().getTime()
-		});
+		io.emit('newMessage', generateMessage(message.from, message.text));
+		callback('This is from the server');
 		// socket.broadcast.emit('newMessage', {
 		// 	from: message.from,
 		// 	text: message.text,

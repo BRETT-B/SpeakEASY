@@ -9,4 +9,19 @@ socket.on('disconnect', function() {
 
 socket.on('newMessage', function(message) {
 	console.log('newMessage', message);
+	var listItem = $('<li></li>');
+	listItem.text(`${message.from}: ${message.text}`);
+
+	$('#messages').append(listItem);
+});
+
+$('#message-form').on('submit', function (event) {
+	event.preventDefault();
+
+	socket.emit('createMessage', {
+		from: 'User',
+		text: $('[name=message]').val()
+	}, function () {
+
+	});
 });

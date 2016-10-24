@@ -7,8 +7,15 @@
 </head>
 <body>
 	<p>Welcome</p>
+	<ol id="messages"></ol>
+	<form id="message-form" accept-charset="utf-8">
+		<input type="text" name="message" placeholder="Type your message" />
+		<button>Send Message</button>
+	</form>
 	<!-- Load in the socket.io library -->
 	<script src="/socket.io/socket.io.js"></script>
+	<!-- Include Jquery(v3.1.1) -->
+	<script src="/js/libs/jquery-3.1.1.min.js"></script>
 	<!-- Initiate a connection request -->
 	<script src="/js/index.js"></script>
 </body>
