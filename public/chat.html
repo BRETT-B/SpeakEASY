@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name=viewport content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <title>Chat | SpeakEASY</title>
+</head>
+
+<body class="chat">
+    <div class="sidebar">
+        <h3>Patrons</h3>
+        <div id="users">
+        </div>
+    </div>
+    <div class="chat-main">
+        <ol class="chat-messages" id="messages"></ol>
+        <div class="chat-footer">
+            <form id="message-form" accept-charset="utf-8">
+                <input type="text" name="message" placeholder="Type your message" autofocus autocomplete="off"/>
+                <button>Send Message</button>
+            </form>
+            <button id="send-location">Send Location</button>
+        </div>
+    </div>
+    <!-- Message Template -->
+    <script id="message-template" type="text/template">
+        <li class="message">
+            <div class="message-title">
+                <h4>{{from}}</h4>
+                <span>{{timestamp}}</span>
+            </div>
+            <div class="message-body">
+                <p>{{text}}</p>
+            </div>
+        </li>
+    </script>
+    <!-- Location Template -->
+    <script id="location-template" type="text/template">
+        <li class="message">
+            <div class="message-title">
+                <h4>{{from}}</h4>
+                <span>{{timestamp}}</span>
+            </div>
+            <div class="message-body">
+                <p><a href="{{url}}" target="_blank">My Location</a></p>
+            </div>
+        </li>
+    </script>
+
+    <!-- Load in the socket.io library -->
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- Include Jquery(v3.1.1) -->
+    <script src="/js/libs/jquery-3.1.1.min.js"></script>
+    <!-- Include Moment.js -->
+    <script src="/js/libs/moment.js"></script>
+    <!-- Include Mustache.js -->
+    <script src="/js/libs/mustache.min.js"></script>
+    <!-- Include Deparam -->
+    <script src="/js/libs/deparam.js"></script>
+    <!-- Initiate a connection request -->
+    <script src="/js/chat.js"></script>
+</body>
+
+</html>

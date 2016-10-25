@@ -1,0 +1,204 @@
+/* line 1, ../compass/sass/styles.scss */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  font-size: .95rem;
+}
+
+/* line 10, ../compass/sass/styles.scss */
+ul, li {
+  list-style-position: inside;
+}
+
+/* line 14, ../compass/sass/styles.scss */
+h3 {
+  font-weight: 600;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+/* line 20, ../compass/sass/styles.scss */
+button {
+  border: none;
+  background: #265f82;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  transition: background .3s ease;
+}
+
+/* line 29, ../compass/sass/styles.scss */
+button:hover {
+  border: none;
+  background: #1F4C69;
+  color: white;
+  padding: 10px;
+}
+
+/* line 36, ../compass/sass/styles.scss */
+button:disabled {
+  cursor: default;
+  background: #698ea5;
+}
+
+/* line 41, ../compass/sass/styles.scss */
+.centered-form {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+}
+
+/* line 49, ../compass/sass/styles.scss */
+.centered-form__form {
+  background: rgba(250, 250, 250, 0.9);
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  padding: 0px 20px;
+  margin: 20px;
+  width: 230px;
+}
+
+/* line 58, ../compass/sass/styles.scss */
+.form-field {
+  margin: 20px 0;
+}
+/* line 60, ../compass/sass/styles.scss */
+.form-field > * {
+  width: 100%;
+}
+/* line 63, ../compass/sass/styles.scss */
+.form-field label {
+  display: block;
+  margin-bottom: 7px;
+}
+/* line 67, ../compass/sass/styles.scss */
+.form-field input, .form-field select {
+  border: 1px solid #e1e1e1;
+  padding: 10px;
+}
+
+/* line 73, ../compass/sass/styles.scss */
+.chat {
+  display: flex;
+}
+
+/* line 77, ../compass/sass/styles.scss */
+.sidebar {
+  overflow-y: scroll;
+  width: 260px;
+  height: 100vh;
+}
+/* line 81, ../compass/sass/styles.scss */
+.sidebar h3 {
+  color: #265f82;
+  margin: 10px 20px;
+  text-align: left;
+}
+/* line 86, ../compass/sass/styles.scss */
+.sidebar ul {
+  list-style-type: none;
+}
+/* line 89, ../compass/sass/styles.scss */
+.sidebar li {
+  background: #e6eaee;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+}
+
+/* line 99, ../compass/sass/styles.scss */
+.chat-main {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+/* line 106, ../compass/sass/styles.scss */
+.chat-messages {
+  flex-grow: 1;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* line 112, ../compass/sass/styles.scss */
+.chat-footer {
+  background: #e6eaee;
+  display: flex;
+  padding: 10px;
+  flex-shrink: 0;
+}
+/* line 117, ../compass/sass/styles.scss */
+.chat-footer form {
+  flex-grow: 1;
+  display: flex;
+}
+/* line 120, ../compass/sass/styles.scss */
+.chat-footer form * {
+  margin-right: 10px;
+}
+/* line 124, ../compass/sass/styles.scss */
+.chat-footer input {
+  border: none;
+  padding: 10px;
+  flex-grow: 1;
+}
+
+/* line 131, ../compass/sass/styles.scss */
+.chat-messages {
+  list-style-type: none;
+  padding: 10px;
+}
+
+/* line 136, ../compass/sass/styles.scss */
+.message {
+  padding: 10px;
+}
+
+/* line 140, ../compass/sass/styles.scss */
+.message-title {
+  display: flex;
+  margin-bottom: 5px;
+}
+/* line 143, ../compass/sass/styles.scss */
+.message-title h4 {
+  font-weight: 600;
+  margin-right: 10px;
+}
+/* line 147, ../compass/sass/styles.scss */
+.message-title span {
+  color: #999;
+}
+
+@media (max-width: 600px) {
+  /* line 153, ../compass/sass/styles.scss */
+  * {
+    font-size: 1rem;
+  }
+
+  /* line 157, ../compass/sass/styles.scss */
+  .sidebar {
+    display: none;
+  }
+
+  /* line 161, ../compass/sass/styles.scss */
+  .chat-footer {
+    flex-direction: column;
+  }
+
+  /* line 165, ../compass/sass/styles.scss */
+  .chat-footer form {
+    margin-bottom: 10px;
+  }
+
+  /* line 169, ../compass/sass/styles.scss */
+  .chat-footer button {
+    margin-right: 0px;
+  }
+}

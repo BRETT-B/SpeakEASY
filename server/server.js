@@ -4,6 +4,8 @@ const ex = require('express');
 const socketIO = require('socket.io');
 
 const {generateMessage, generateLocation} = require('./utils/message');
+const {validString} = require('./utils/validation');
+
 const publicPath = path.join(__dirname, '../public');
 // Set up a environment variable for Heroku
 const port = process.env.PORT || 3000;
@@ -17,11 +19,27 @@ var io = socketIO(server);
 app.use(ex.static(publicPath));
 
 io.on('connection', (socket) => {
-	console.log('New user connected');
-	// Emit message to welcome user from Admin
-	socket.emit('newMessage', generateMessage('Admin', 'Welcome to SpeakEASY'));
-	// Emit message to all sockets that user joined, excluding that user
-	socket.broadcast.emit('newMessage', generateMessage('Admin', 'New user joined'));
+	console.log('New client connection opened');
+	
+
+	socket.on('join', (params, callback) => {
+		if (!validString(params.name) || !validString(params.room)) {
+			callback('Display Name & Room Name are Required')
+		}
+
+		socket.join(params.room);
+		// socket.leave('')
+		//io.emit - this emits to every single connected user (method to() which sends to the given argument)
+		//socket.broadcast.emit - this sends the message to everyone except for the current user
+		//socket.emit - sends to specifically one user
+		// Emit message to welcome user from Admin
+		socket.emit('newMessage', generateMessage('Admin', 'Welcome to SpeakEASY'));
+		// Emit message to all sockets that user joined, excluding that user
+		socket.broadcast.to(params.room).emit('newMessage', generateMessage('Admin', `${params.name} has joined`));
+
+		callback(); 
+	});
+
 	socket.on('createMessage', (message, callback) => {
 		console.log('createMessage', message);
 		io.emit('newMessage', generateMessage(message.from, message.text));
