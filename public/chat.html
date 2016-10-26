@@ -4,11 +4,24 @@
 <head>
     <meta charset="utf-8">
     <meta name=viewport content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <!-- Bootstrap 3 Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="/css/mdb.min.css">
+    <!-- Ionic Icons -->
+    <link rel="stylesheet" type="text/css" href="/css/ionicons.min.css">
+    <!-- Material Design Icons -->
+    <link rel="stylesheet" type="text/css" href="/css/materialdesignicons.min.css">
+    <!-- Custom Stylesheet -->
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
     <title>Chat | SpeakEASY</title>
 </head>
 
 <body class="chat">
+
+
     <div class="sidebar">
         <h3>Patrons</h3>
         <div id="users">
@@ -19,9 +32,9 @@
         <div class="chat-footer">
             <form id="message-form" accept-charset="utf-8">
                 <input type="text" name="message" placeholder="Type your message" autofocus autocomplete="off"/>
-                <button>Send Message</button>
+                <button><i class="fa fa-paper-plane"></i></button>
             </form>
-            <button id="send-location">Send Location</button>
+            <button id="send-location"><i class="fa fa-map-marker"></i></button>
         </div>
     </div>
     <!-- Message Template -->
@@ -53,6 +66,12 @@
     <script src="/socket.io/socket.io.js"></script>
     <!-- Include Jquery(v3.1.1) -->
     <script src="/js/libs/jquery-3.1.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/libs/tether.min.js"></script>
+    <!-- Include Bootstrap 3 JS -->
+    <script src="/js/libs/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/libs/mdb.min.js"></script>
     <!-- Include Moment.js -->
     <script src="/js/libs/moment.js"></script>
     <!-- Include Mustache.js -->

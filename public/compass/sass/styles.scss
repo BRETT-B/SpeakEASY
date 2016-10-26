@@ -118,7 +118,7 @@ button:disabled {
         flex-grow: 1;
         display: flex;
         * {
-            margin-right: 10px;
+            margin-right: 5px;
         }
     }
     input {
@@ -169,4 +169,75 @@ button:disabled {
 	.chat-footer button {
 		margin-right: 0px;
 	}
+}
+html,
+body,
+.view {
+    height: 100%;
+}
+
+
+/* Navigation*/
+.scrolling-navbar {
+    transition: background .5s ease-in-out, padding .5s ease-in-out;
+}
+
+.top-nav-collapse {
+    background-color: #1C2331;
+}
+
+/*Call to action*/
+
+.flex-center {
+    color: #fff;
+}
+
+.view {
+    background: url("../img/background.jpg")no-repeat center center fixed;
+    background-size: cover;
+}
+
+
+.navbar.fa {
+    color: darkgoldenrod;
+}
+.navbar {
+	border: none !important;
+	box-shadow: none !important;
+}
+.nav-link {
+    color: darkgoldenrod !important;
+}
+
+.navbar-brand {
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    margin: 0 auto;
+}
+
+.navbar-brand > img {
+    display: inline;
+}
+.join {
+	background: rgba(255,255,255,0.3);
+}
+.modal-content {
+	border-radius: 1rem;
+	background: rgba(255,255,255,0.7);
+}
+.modal-header {
+	border: none;
+}
+
+
+@media (max-width: 768px) {
+	.navbar {
+        background-color: #1C2331;
+    }
+    .navbar-brand {
+        display: none;
+    }
 }

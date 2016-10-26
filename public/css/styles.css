@@ -141,7 +141,7 @@ button:disabled {
 }
 /* line 120, ../compass/sass/styles.scss */
 .chat-footer form * {
-  margin-right: 10px;
+  margin-right: 5px;
 }
 /* line 124, ../compass/sass/styles.scss */
 .chat-footer input {
@@ -200,5 +200,93 @@ button:disabled {
   /* line 169, ../compass/sass/styles.scss */
   .chat-footer button {
     margin-right: 0px;
+  }
+}
+/* line 173, ../compass/sass/styles.scss */
+html,
+body,
+.view {
+  height: 100%;
+}
+
+/* Navigation*/
+/* line 181, ../compass/sass/styles.scss */
+.scrolling-navbar {
+  transition: background .5s ease-in-out, padding .5s ease-in-out;
+}
+
+/* line 185, ../compass/sass/styles.scss */
+.top-nav-collapse {
+  background-color: #1C2331;
+}
+
+/*Call to action*/
+/* line 191, ../compass/sass/styles.scss */
+.flex-center {
+  color: #fff;
+}
+
+/* line 195, ../compass/sass/styles.scss */
+.view {
+  background: url("../img/background.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* line 201, ../compass/sass/styles.scss */
+.navbar.fa {
+  color: darkgoldenrod;
+}
+
+/* line 204, ../compass/sass/styles.scss */
+.navbar {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* line 208, ../compass/sass/styles.scss */
+.nav-link {
+  color: darkgoldenrod !important;
+}
+
+/* line 212, ../compass/sass/styles.scss */
+.navbar-brand {
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  margin: 0 auto;
+}
+
+/* line 221, ../compass/sass/styles.scss */
+.navbar-brand > img {
+  display: inline;
+}
+
+/* line 224, ../compass/sass/styles.scss */
+.join {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* line 227, ../compass/sass/styles.scss */
+.modal-content {
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* line 231, ../compass/sass/styles.scss */
+.modal-header {
+  border: none;
+}
+
+@media (max-width: 768px) {
+  /* line 237, ../compass/sass/styles.scss */
+  .navbar {
+    background-color: #1C2331;
+  }
+
+  /* line 240, ../compass/sass/styles.scss */
+  .navbar-brand {
+    display: none;
   }
 }

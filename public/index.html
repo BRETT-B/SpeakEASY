@@ -1,32 +1,133 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset=utf-8>
-    <meta name=viewport content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>Join | speakEASY</title>
-    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Home | speakEASY</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Custom Styles-->
+    <link href="css/styles.css" rel="stylesheet">
 </head>
 
-<body class="centered-form">
-    <div class="join">
-        <form action="/chat.html">
-            <div class="form-field">
-            	<h3>Join A Chat</h3>
-            </div>
-            <div class="form-field">
-            	<label>Display Name</label>
-            	<input type="text" name="name" autofocus tabindex="1" required>
-            </div>
-            <div class="form-field">
-            	<label>Room Name</label>
-            	<input type="text" name="room" tabindex="2">
-            </div>
-            <div class="form-field">
-            	<button>Join</button>
-            </div>
-        </form>
+<body>
+    <!--Navbar-->
+    <nav class="navbar navbar-fixed-top transparent">
+        <div class="container-fluid">
+            <!--Navbar Left-->
+            <ul class="nav navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+            </ul>
+            <a class="navbar-brand text-xs-center p-l-3"><img class="img-fluid" src="img/speakeasy-logo.png"></a>
+            <!--Navbar Right-->
+            <ul class="nav navbar-nav pull-xs-right">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--/Navbar-->
+    <!--Mask-->
+    <div class="view hm-black-strong">
+        <div class="full-bg-img flex-center">
+            <ul class="animated fadeInUp">
+                <li>
+                    <h1 class="h1-responsive font-weight-bold">Modern Chat with Retro Style</h1></li>
+                <li>
+                    <p class="font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                </li>
+                <li>
+                    <a class="join btn btn-lg btn-warning-outline btn-rounded waves-effect" data-toggle="modal" data-target="#modal-join">Join Chat!</a>
+                </li>
+            </ul>
+        </div>
     </div>
+    <!--/Mask-->
+    <!-- Modal Join Chat -->
+    <div class="modal fade modal-ext" id="modal-join" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!--Form Header-->
+                    <div class="card">
+                        <div class="card-block">
+                            <div class="form-header deep-orange-gradient">
+                                <h3 class="h3-responsive font-weight-bold">Join Chat</h3>
+                            </div>
+                            <!--Form Body-->
+                            <form action="/chat.html">
+                                <div class="md-form">
+                                    <input name="name" type="text" class="form-control" autofocus tabindex="1" required>
+                                    <label>Display Name</label>
+                                </div>
+                                <div class="md-form">
+                                    <select name="room" class="mdb-select colorful-select dropdown-warning">
+                                        <option></option>
+                                        <option value="1">Blind Pig Parlour Bar</option>
+                                        <option value="2">Brigantine Beer Parlor</option>
+                                        <option value="3">City Winery</option>
+                                        <option value="4">Edgewood Speakeasy</option>
+                                        <option value="5">El Bar</option>
+                                        <option value="6">Eleanor's</option>
+                                        <option value="7">GA Chapter Room</option>
+                                        <option value="8">Proof & Provision</option>
+                                        <option value="9">Red Phone Booth</option>
+                                        <option value="10">Supply & Demand</option>
+                                        <option value="11">The Bureau</option>
+                                        <option value="12">The Club @ Chops</option>
+                                        <option value="13">The Duck Club Speakeasy</option>
+                                        <option value="14">The War Room</option>
+                                    </select>
+                                    <label>Select Room</label>
+                                </div>
+                                <div class="text-xs-center">
+                                    <button class="btn btn-lg btn-primary">Join</button>
+                                    <button type="button" class="btn danger-color-dark" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Modal Join Chat -->
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/libs/jquery-3.1.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/libs/tether.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/libs/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/libs/mdb.min.js"></script>
+    <script>
+    // Material Select Initialization
+    $(document).ready(function() {
+        $('.mdb-select').material_select();
+    });
+
+    Waves.attach('.navbar li', ['waves-light']);
+    Waves.init();
+    </script>
 </body>
 
 </html>
