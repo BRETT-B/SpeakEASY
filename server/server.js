@@ -49,13 +49,18 @@ io.on('connection', (socket) => {
     });
 
     socket.on('createMessage', (message, callback) => {
-        console.log('createMessage', message);
-        io.emit('newMessage', generateMessage(message.from, message.text));
+        var patron = patrons.getPatron(socket.id);
+        if (patron && validString(message.text)) {
+        	io.to(patron.room).emit('newMessage', generateMessage(patron.name, message.text));
+        }
         callback();
     });
 
     socket.on('createLocation', (coords) => {
-        io.emit('newLocation', generateLocation('Admin', coords.latitude, coords.longitude));
+    	var patron = patrons.getPatron(socket.id);
+    	if (patron){
+        	io.to(patron.room).emit('newLocation', generateLocation(patron.name, coords.latitude, coords.longitude));
+    	}
     });
 
     socket.on('disconnect', () => {
