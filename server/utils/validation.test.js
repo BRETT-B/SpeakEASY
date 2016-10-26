@@ -1,9 +1,20 @@
 const expect = require('expect');
 
+const {validString} = require('./validation');
 
-//function is called validString
-//test cases
+describe('validString', () => {
+	it('should reject non string values', () => {
+		var response = validString(15);
+		expect(response).toBe(false);
+	});
 
-//should reject non-string
-//should reject string with only spaces
-//should allow string with non-space characters i.e. c u b b i e s
+	it('should reject string with ONLY spaces', () => {
+		var response = validString('    ');
+		expect(response).toBe(false);
+	});
+
+	it('should allow string with non-space characters', () => {
+		var response = validString('  Name  ');
+		expect(response).toBe(true);
+	});
+});

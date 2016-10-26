@@ -28,6 +28,15 @@ $(document).ready(function() {
     socket.on('disconnect', function() {
         console.log('Disconnected from server')
     });
+    socket.on('updatePatronList', function (patrons) {
+    	var ul = $('<ul></ul>');
+
+    	patrons.forEach(function (patron) {
+    		ul.append($('<li></li>').text(patron));
+    	});
+
+    	$('#patrons').html(ul);
+    });
     socket.on('newMessage', function(message) {
         var formattedTime = moment(message.timestamp).format('h:mm a');
         var template = $('#message-template').html();

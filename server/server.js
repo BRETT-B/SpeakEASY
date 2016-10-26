@@ -6,6 +6,8 @@ const socketIO = require('socket.io');
 const { generateMessage, generateLocation } = require('./utils/message');
 const { validString } = require('./utils/validation');
 
+const {Patrons} = require('./utils/patrons');
+
 const publicPath = path.join(__dirname, '../public');
 // Set up a environment variable for Heroku
 const port = process.env.PORT || 3000;
@@ -15,6 +17,8 @@ var app = ex();
 var server = http.createServer(app);
 // Configure a web socket server
 var io = socketIO(server);
+// Create new instance of Users
+var patrons = new Patrons();
 // Config Express static middleware
 app.use(ex.static(publicPath));
 
@@ -24,10 +28,14 @@ io.on('connection', (socket) => {
 
     socket.on('join', (params, callback) => {
         if (!validString(params.name) || !validString(params.room)) {
-            callback('Display Name & Room Name are Required')
+            return callback('Display Name & Room Name are Required')
         }
 
         socket.join(params.room);
+        patrons.removePatron(socket.id);
+        patrons.addPatron(socket.id, params.name, params.room);
+
+        io.to(params.room).emit('updatePatronList', patrons.getPatronList(params.room))
         // socket.leave('')
         //io.emit - this emits to every single connected user (method to() which sends to the given argument)
         //socket.broadcast.emit - this sends the message to everyone except for the current user
@@ -51,7 +59,12 @@ io.on('connection', (socket) => {
     });
 
     socket.on('disconnect', () => {
-        console.log('Client disconnected');
+        var patron = patrons.removePatron(socket.id);
+
+        if (patron) {
+        	io.to(patron.room).emit('updatePatronList', patrons.getPatronList(patron.room));
+        	io.to(patron.room).emit('newMessage', generateMessage('Admin', `${patron.name} has left`));
+        }
     });
 });
 
