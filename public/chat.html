@@ -54,7 +54,7 @@
                     <span>{{timestamp}}</span>
                 </div>
                 <div class="message-body">
-                    <p><a href="{{coords}}">My Location</a></p>
+                    <p><a id="coordinates" href="javascript:void(0)" onclick="sendLocation({{coords}})">My Location</a></p>
                 </div>
             </li>
         </script>
@@ -85,6 +85,9 @@
     <script src="/js/geolocation/speakeasy.json"></script>
     <!--Google Maps-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHBNUrwUYAPNrwu1-vn4aK-zxL1dvSUFI"></script>
+    <script>
+        
+    </script>
 </body>
 
 </html>
