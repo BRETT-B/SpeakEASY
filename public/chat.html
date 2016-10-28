@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name=viewport content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Chat | SpeakEASY</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
     <!-- Bootstrap 3 Stylesheet -->
@@ -12,52 +14,56 @@
     <link rel="stylesheet" type="text/css" href="/css/mdb.min.css">
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
-    <title>Chat | SpeakEASY</title>
 </head>
 
 <body class="chat">
-
-
-    <div class="sidebar">
-        <h3>Patrons</h3>
+    
+    <div class="sidebar deep-orange-gradient col-md-2 col-sm-4 z-depth-5">
+        <h3 class="text-warning">Patrons</h3>
         <div id="patrons">
         </div>
     </div>
-    <div class="chat-main">
-        <ol class="chat-messages" id="messages"></ol>
-        <div class="chat-footer">
-            <form id="message-form" accept-charset="utf-8">
-                <input type="text" name="message" placeholder="Message Text" autofocus autocomplete="off"/>
-                <button><i class="fa fa-paper-plane"></i></button>
-            </form>
-            <button id="send-location"><i class="fa fa-map-marker"></i></button>
+    <div class="chat col-md-6 col-sm-8 p-a-0">
+        <div class="chat-main">
+            <ol class="chat-messages" id="messages"></ol>
+            <div class="chat-footer">
+                <form id="message-form" accept-charset="utf-8">
+                    <input type="text" name="message" placeholder="Message Text" autofocus autocomplete="off" />
+                    <button class="btn-warning"><i class="fa fa-paper-plane"></i></button>
+                </form>
+                <button class="btn-warning" id="send-location"><i class="fa fa-map-marker"></i></button>
+            </div>
+        </div>
+        <!-- Message Template -->
+        <script id="message-template" type="text/template">
+            <li class="message">
+                <div class="message-title">
+                    <h4>{{from}}</h4>
+                    <span>{{timestamp}}</span>
+                </div>
+                <div class="message-body">
+                    <p>{{text}}</p>
+                </div>
+            </li>
+        </script>
+        <!-- Location Template -->
+        <script id="location-template" type="text/template">
+            <li class="message">
+                <div class="message-title">
+                    <h4>{{from}}</h4>
+                    <span>{{timestamp}}</span>
+                </div>
+                <div class="message-body">
+                    <p><a href="{{coords}}">My Location</a></p>
+                </div>
+            </li>
+        </script>
+    </div>
+    <div class="col-md-4 col-sm-12 p-a-0 m-a-0">
+        <div>
+            <div id="map" class="z-depth-5" style="height: 100vh"></div>
         </div>
     </div>
-    <!-- Message Template -->
-    <script id="message-template" type="text/template">
-        <li class="message">
-            <div class="message-title">
-                <h4>{{from}}</h4>
-                <span>{{timestamp}}</span>
-            </div>
-            <div class="message-body">
-                <p>{{text}}</p>
-            </div>
-        </li>
-    </script>
-    <!-- Location Template -->
-    <script id="location-template" type="text/template">
-        <li class="message">
-            <div class="message-title">
-                <h4>{{from}}</h4>
-                <span>{{timestamp}}</span>
-            </div>
-            <div class="message-body">
-                <p><a href="{{url}}" target="_blank">My Location</a></p>
-            </div>
-        </li>
-    </script>
-
     <!-- Load in the socket.io library -->
     <script src="/socket.io/socket.io.js"></script>
     <!-- Include Jquery(v3.1.1) -->
@@ -74,8 +80,11 @@
     <script src="/js/libs/mustache.min.js"></script>
     <!-- Include Deparam -->
     <script src="/js/libs/deparam.js"></script>
-    <!-- Initiate a connection request -->
+    <!-- Application Scripts -->
     <script src="/js/chat.js"></script>
+    <script src="/js/geolocation/speakeasy.json"></script>
+    <!--Google Maps-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHBNUrwUYAPNrwu1-vn4aK-zxL1dvSUFI"></script>
 </body>
 
 </html>

@@ -30,7 +30,7 @@ io.on('connection', (socket) => {
         if (!validString(params.name) || !validString(params.room)) {
             return callback('Display Name & Room Name are Required')
         }
-
+        var chatroom = params.room;
         socket.join(params.room);
         patrons.removePatron(socket.id);
         patrons.addPatron(socket.id, params.name, params.room);
@@ -41,7 +41,7 @@ io.on('connection', (socket) => {
         //socket.broadcast.emit - this sends the message to everyone except for the current user
         //socket.emit - sends to specifically one user
         // Emit message to welcome user from Admin
-        socket.emit('newMessage', generateMessage('Admin', 'Welcome to SpeakEASY'));
+        socket.emit('newMessage', generateMessage('Admin', `Welcome to ${chatroom} chatroom`));
         // Emit message to all sockets that user joined, excluding that user
         socket.broadcast.to(params.room).emit('newMessage', generateMessage('Admin', `${params.name} has joined`));
 

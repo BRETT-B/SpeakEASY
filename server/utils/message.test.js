@@ -17,11 +17,11 @@ describe('generateMessage', () => {
 		var from = 'Brett';
 		var latitude = '11';
 		var longitude = '12';
-		var url = 'https://www.google.com/maps?q=11,12';
+		var coords = '11,12';
 		var message = generateLocation(from, latitude, longitude);
 
 		expect(message.timestamp).toBeA('number');
-		expect(message).toInclude({from, url});
+		expect(message).toInclude({from, coords});
 	});
 });
 
