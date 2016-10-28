@@ -144,6 +144,9 @@ button:disabled {
         color: #999;
     }
 }
+#map {
+	border: 3px solid black;
+}
 @media (max-width: 600px) {
 	* {
 		font-size: 1rem;
@@ -159,7 +162,7 @@ button:disabled {
 	.chat-footer button {
 		margin-right: 0px;
 	}
-	.map {
+	#map {
 		width: 100%;
 	}
 }
