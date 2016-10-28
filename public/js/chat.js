@@ -1,9 +1,8 @@
 var current;
-
-function sendLocation(lat, lng) {
-    current.lat = lat;
-    current.lng = lng;
-    initMap();
+sendLocation = function(latitude, longitude) {
+    latitude = latitude;
+    longitude = longitude;
+    initMap(latitude, longitude);
 }
 $(document).ready(function() {
     var socket = io();
@@ -86,17 +85,30 @@ $(document).ready(function() {
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude
             });
-
         }, function() {
             locationButton.removeAttr('disabled').html('<i class="fa fa-map-marker"></i>');
             alert('Unable to fetch location');
         });
     });
-
     var map;
-
-    window.initMap = function() {
-        if (navigator.geolocation) {
+    window.initMap = function(latitude, longitude) {
+        if (typeof latitude === 'number') {
+            console.log('loading map from link');
+            current = new google.maps.LatLng(latitude, longitude);
+            var mapOptions = {
+                center: current,
+                mapTypeId: 'terrain',
+                zoom: 13,
+                styles: [{ "featureType": "administrative", "elementType": "labels.text.fill", "stylers": [{ "color": "#444444" }] }, { "featureType": "landscape", "elementType": "all", "stylers": [{ "color": "#f2f2f2" }] }, { "featureType": "landscape", "elementType": "geometry.fill", "stylers": [{ "visibility": "on" }] }, { "featureType": "landscape.man_made", "elementType": "geometry.fill", "stylers": [{ "hue": "#ffd100" }, { "saturation": "44" }] }, { "featureType": "landscape.man_made", "elementType": "geometry.stroke", "stylers": [{ "saturation": "-1" }, { "hue": "#ff0000" }] }, { "featureType": "landscape.natural", "elementType": "geometry", "stylers": [{ "saturation": "-16" }] }, { "featureType": "landscape.natural", "elementType": "geometry.fill", "stylers": [{ "hue": "#ffd100" }, { "saturation": "44" }] }, { "featureType": "poi", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "road", "elementType": "all", "stylers": [{ "saturation": "-30" }, { "lightness": "12" }, { "hue": "#ff8e00" }] }, { "featureType": "road.highway", "elementType": "all", "stylers": [{ "visibility": "simplified" }, { "saturation": "-26" }] }, { "featureType": "road.arterial", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "water", "elementType": "all", "stylers": [{ "color": "#c0b78d" }, { "visibility": "on" }, { "saturation": "4" }, { "lightness": "40" }] }, { "featureType": "water", "elementType": "geometry", "stylers": [{ "hue": "#ffe300" }] }, { "featureType": "water", "elementType": "geometry.fill", "stylers": [{ "hue": "#ffe300" }, { "saturation": "-3" }, { "lightness": "-10" }] }, { "featureType": "water", "elementType": "labels", "stylers": [{ "hue": "#ff0000" }, { "saturation": "-100" }, { "lightness": "-5" }] }, { "featureType": "water", "elementType": "labels.text.fill", "stylers": [{ "visibility": "off" }] }, { "featureType": "water", "elementType": "labels.text.stroke", "stylers": [{ "visibility": "off" }] }]
+            };
+            map = new google.maps.Map(document.getElementById("map"),
+                mapOptions);
+            fetch('https://raw.githubusercontent.com/BRETT-B/SpeakEASY/master/public/js/geolocation/speakeasy.json')
+                .then(function(response) {
+                    return response.json()
+                })
+                .then(plotMarkers);
+        } else if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
                 current = {
                     lat: position.coords.latitude,
@@ -108,7 +120,6 @@ $(document).ready(function() {
                     zoom: 13,
                     styles: [{ "featureType": "administrative", "elementType": "labels.text.fill", "stylers": [{ "color": "#444444" }] }, { "featureType": "landscape", "elementType": "all", "stylers": [{ "color": "#f2f2f2" }] }, { "featureType": "landscape", "elementType": "geometry.fill", "stylers": [{ "visibility": "on" }] }, { "featureType": "landscape.man_made", "elementType": "geometry.fill", "stylers": [{ "hue": "#ffd100" }, { "saturation": "44" }] }, { "featureType": "landscape.man_made", "elementType": "geometry.stroke", "stylers": [{ "saturation": "-1" }, { "hue": "#ff0000" }] }, { "featureType": "landscape.natural", "elementType": "geometry", "stylers": [{ "saturation": "-16" }] }, { "featureType": "landscape.natural", "elementType": "geometry.fill", "stylers": [{ "hue": "#ffd100" }, { "saturation": "44" }] }, { "featureType": "poi", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "road", "elementType": "all", "stylers": [{ "saturation": "-30" }, { "lightness": "12" }, { "hue": "#ff8e00" }] }, { "featureType": "road.highway", "elementType": "all", "stylers": [{ "visibility": "simplified" }, { "saturation": "-26" }] }, { "featureType": "road.arterial", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "water", "elementType": "all", "stylers": [{ "color": "#c0b78d" }, { "visibility": "on" }, { "saturation": "4" }, { "lightness": "40" }] }, { "featureType": "water", "elementType": "geometry", "stylers": [{ "hue": "#ffe300" }] }, { "featureType": "water", "elementType": "geometry.fill", "stylers": [{ "hue": "#ffe300" }, { "saturation": "-3" }, { "lightness": "-10" }] }, { "featureType": "water", "elementType": "labels", "stylers": [{ "hue": "#ff0000" }, { "saturation": "-100" }, { "lightness": "-5" }] }, { "featureType": "water", "elementType": "labels.text.fill", "stylers": [{ "visibility": "off" }] }, { "featureType": "water", "elementType": "labels.text.stroke", "stylers": [{ "visibility": "off" }] }]
                 };
-
                 map = new google.maps.Map(document.getElementById("map"),
                     mapOptions);
                 fetch('https://raw.githubusercontent.com/BRETT-B/SpeakEASY/master/public/js/geolocation/speakeasy.json')
@@ -116,8 +127,6 @@ $(document).ready(function() {
                         return response.json()
                     })
                     .then(plotMarkers);
-            }, function() {
-                handleLocationError(true, infoWindow, map.getCenter());
             });
         } else {
             return alert('Geolocation not supported by your current browser');
@@ -148,6 +157,5 @@ $(document).ready(function() {
             );
             bounds.extend(position);
         });
-
     }
 });
