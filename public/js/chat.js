@@ -9,7 +9,7 @@ var params = $.deparam(window.location.search);
 $(document).ready(function() {
     var infoWindowWidth = $('#info-window').width()
     var socket = io();
-
+    $('#info-window').addClass('hideDiv');
     function scrollMessages() {
         // selectors
         var messages = $('#messages');
@@ -173,6 +173,8 @@ $(document).ready(function() {
             );
             markers.push(speakeasy);
             speakeasy.addListener('click', function() {
+                $('#map').removeClass('noInfo');
+                infoDiv.removeClass('hideDiv');
                 infoDiv.html(contentString);
             });
 

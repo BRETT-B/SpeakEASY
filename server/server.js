@@ -3,6 +3,11 @@ const http = require('http');
 const ex = require('express');
 const socketIO = require('socket.io');
 
+const mongodb = require('mongodb');
+const mongoClient = mongodb.MongoClient;
+const dbURL = 'mongodb://localhost:27017/speakEASY';
+var db;
+
 const { generateMessage, generateLocation } = require('./utils/message');
 const { validString } = require('./utils/validation');
 
@@ -21,6 +26,15 @@ var io = socketIO(server);
 var patrons = new Patrons();
 // Config Express static middleware
 app.use(ex.static(publicPath));
+
+mongoClient.connect(dbURL, function(error, database){
+    if(error){
+        console.log(error); //Print out the error because there is one
+    }else{
+        db = database; //Set the database object that was passed back to our callback, to our global db.
+        console.log("Connected to Mongo successfully.");
+    }
+});
 
 io.on('connection', (socket) => {
     console.log('New client connection opened');

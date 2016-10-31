@@ -159,6 +159,12 @@ button#send-location:disabled {
         color: #999;
     }
 }
+.noInfo {
+	height: 100vh !important;
+}
+.hideDiv{
+	display: none !important;
+}
 
 #map {
     height: 70vh;
