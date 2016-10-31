@@ -42,10 +42,15 @@ button#send-location:disabled {
 }
 
 #info-window {
-    height: 35vh;
+    height: 30vh;
     overflow-y: scroll;
     border: 3px ridge #999;
-}
+    h4 {
+    	position: fixed;
+    	border-bottom: 1px solid #999;
+    	background: rgba(232, 210, 155, 0.9);
+    }
+}	
 
 .centered-form {
     display: flex;
@@ -156,7 +161,7 @@ button#send-location:disabled {
 }
 
 #map {
-    height: 65vh;
+    height: 70vh;
     border: 3px ridge #999;
     border-bottom: none;
 }

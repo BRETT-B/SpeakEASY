@@ -6,6 +6,8 @@ sendLocation = function(latitude, longitude) {
 }
 
 $(document).ready(function() {
+    var width = $('#info-window').width()
+    console.log(width);
     var socket = io();
     function scrollMessages() {
         // selectors
@@ -97,13 +99,14 @@ $(document).ready(function() {
     var mapStyle = [{ "featureType": "administrative", "elementType": "labels.text.fill", "stylers": [{ "color": "#444444" }] }, { "featureType": "landscape", "elementType": "all", "stylers": [{ "color": "#f2f2f2" }] }, { "featureType": "landscape", "elementType": "geometry.fill", "stylers": [{ "visibility": "on" }] }, { "featureType": "landscape.man_made", "elementType": "geometry.fill", "stylers": [{ "hue": "#ffd100" }, { "saturation": "44" }] }, { "featureType": "landscape.man_made", "elementType": "geometry.stroke", "stylers": [{ "saturation": "-1" }, { "hue": "#ff0000" }] }, { "featureType": "landscape.natural", "elementType": "geometry", "stylers": [{ "saturation": "-16" }] }, { "featureType": "landscape.natural", "elementType": "geometry.fill", "stylers": [{ "hue": "#ffd100" }, { "saturation": "44" }] }, { "featureType": "poi", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "road", "elementType": "all", "stylers": [{ "saturation": "-30" }, { "lightness": "12" }, { "hue": "#ff8e00" }] }, { "featureType": "road.highway", "elementType": "all", "stylers": [{ "visibility": "simplified" }, { "saturation": "-26" }] }, { "featureType": "road.arterial", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "water", "elementType": "all", "stylers": [{ "color": "#c0b78d" }, { "visibility": "on" }, { "saturation": "4" }, { "lightness": "40" }] }, { "featureType": "water", "elementType": "geometry", "stylers": [{ "hue": "#ffe300" }] }, { "featureType": "water", "elementType": "geometry.fill", "stylers": [{ "hue": "#ffe300" }, { "saturation": "-3" }, { "lightness": "-10" }] }, { "featureType": "water", "elementType": "labels", "stylers": [{ "hue": "#ff0000" }, { "saturation": "-100" }, { "lightness": "-5" }] }, { "featureType": "water", "elementType": "labels.text.fill", "stylers": [{ "visibility": "off" }] }, { "featureType": "water", "elementType": "labels.text.stroke", "stylers": [{ "visibility": "off" }] }];
 
     var infoDiv = $('#info-window');
+    var infoDivH4 = $('#info-window h4');
     window.initMap = function(latitude, longitude) {
         if (typeof latitude === 'number') {
             current = new google.maps.LatLng(latitude, longitude);
             var mapOptions = {
                 center: current,
                 mapTypeId: 'terrain',
-                zoom: 13,
+                zoom: 12,
                 styles: mapStyle
             };
             map = new google.maps.Map(document.getElementById("map"),
@@ -122,7 +125,7 @@ $(document).ready(function() {
                 var mapOptions = {
                     center: current,
                     mapTypeId: 'terrain',
-                    zoom: 10,
+                    zoom: 12,
                     styles: mapStyle
                 };
                 map = new google.maps.Map(document.getElementById("map"),
@@ -157,10 +160,9 @@ $(document).ready(function() {
                 icon: 'https://raw.githubusercontent.com/BRETT-B/SpeakEASY/master/public/img/marker.png',
                 title: title
             });
-            var contentString = "<div id='title-container' class='container-fluid' /><a href='chat.html?name=Brett+Burdick&room="+marker.name+"#'><h4 id='info-title' class='h4-responsive font-italic text-xs-center'>"+marker.name+"</h4></a><h6 class='h6-responsive text-xs-center'>"+marker.est+"</h6></div><div id='info-text' class='text-justify p-a-1'><p>"+marker.info+"</p><p>"+marker.entry+"</p></div>";
-            var infowindow = new google.maps.InfoWindow({
-                content: contentString
-            });
+            var contentString = '<div id="title-container" class="container-fluid" />'+
+            '<a href="chat.html?name=Brett+Burdick&room='+encodeURI(marker.name)+'#">'+
+            '<h4 id="info-title" style="width:'+width+'px" class="h4-responsive font-italic text-xs-center">'+marker.name+'</h4></a><h6 class="h6-responsive text-xs-center p-t-3">est. '+marker.est+'</h6></div><div id="info-text" class="text-justify p-a-1"><p>'+marker.info+'</p><p>'+marker.entry+'</p></div>';
             markers.push(
                 new google.maps.Marker({
                     position: current,
@@ -169,7 +171,7 @@ $(document).ready(function() {
             );
             markers.push(speakeasy);
             speakeasy.addListener('click', function() {
-                infowindow.open(map, speakeasy);
+                infoDiv.html(contentString);
             });  
             
             bounds.extend(position);
