@@ -112,7 +112,7 @@ $(document).ready(function() {
             };
             map = new google.maps.Map(document.getElementById("map"),
                 mapOptions);
-            fetch('https://raw.githubusercontent.com/BRETT-B/SpeakEASY/master/public/js/geolocation/speakeasy.json')
+            fetch('https://stark-reaches-93085.herokuapp.com/js/geolocation/speakeasy.json')
                 .then(function(response) {
                     return response.json()
                 })
@@ -131,7 +131,7 @@ $(document).ready(function() {
                 };
                 map = new google.maps.Map(document.getElementById("map"),
                     mapOptions);
-                fetch('https://raw.githubusercontent.com/BRETT-B/SpeakEASY/master/public/js/geolocation/speakeasy.json')
+                fetch('https://stark-reaches-93085.herokuapp.com/js/geolocation/speakeasy.json')
                     .then(function(response) {
                         return response.json()
                     })
@@ -150,6 +150,7 @@ $(document).ready(function() {
         bounds = new google.maps.LatLngBounds();
         m.forEach(function(marker) {
             var position = new google.maps.LatLng(marker.lat, marker.lng);
+            var name = params.name;
             var title = marker.name;
             var est = marker.est;
             var info = marker.info;
@@ -158,12 +159,12 @@ $(document).ready(function() {
                 position: position,
                 map: map,
                 animation: google.maps.Animation.DROP,
-                icon: 'https://raw.githubusercontent.com/BRETT-B/SpeakEASY/master/public/img/marker.png',
+                icon: 'https://stark-reaches-93085.herokuapp.com/img/marker.png',
                 title: title
             });
             var contentString = '<div id="title-container" class="container-fluid" />' +
-                '<a href="chat.html?name=' + encodeURI(params.name) + '&room=' + encodeURI(marker.name) + '#" target="_blank">' +
-                '<h4 id="info-title" style="width:' + infoWindowWidth + 'px" class="h4-responsive font-italic text-xs-center">' + marker.name + '</h4></a><h6 class="h6-responsive text-xs-center p-t-3">est. ' + marker.est + '</h6></div><div id="info-text" class="text-justify p-a-1"><p>' + marker.info + '</p><p>' + marker.entry + '</p></div>';
+                '<a href="chat.html?name='+encodeURI(name)+'&room='+encodeURI(title)+'#" target="_blank">' +
+                '<h4 id="info-title" style="width:'+infoWindowWidth+'px" class="h4-responsive font-italic text-xs-center">'+title+'</h4></a><h6 class="h6-responsive text-xs-center p-t-3">est. '+est+'</h6></div><div id="info-text" class="text-justify p-a-1"><p>'+info+'</p><p>'+entry+'</p></div>';
             markers.push(
                 new google.maps.Marker({
                     position: current,
