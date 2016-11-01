@@ -114,11 +114,14 @@ $(document).ready(function() {
             };
             map = new google.maps.Map(document.getElementById("map"),
                 mapOptions);
-            fetch('https://raw.githubusercontent.com/BRETT-B/SpeakEASY/master/public/js/geolocation/speakeasy.json')
-                .then(function(response) {
-                    return response.json()
-                })
-                .then(plotMarkers);
+            // fetch('https://raw.githubusercontent.com/BRETT-B/SpeakEASY/master/public/js/geolocation/speakeasy.json')
+            //     .then(function(response) {
+            //         return response.json()
+            //     })
+            //     .then(plotMarkers);
+            $.getJSON('http://localhost:3000/getData', function(data) {
+                    plotMarkers(data);
+                });
         } else if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
                 current = {

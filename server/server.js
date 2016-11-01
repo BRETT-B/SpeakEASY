@@ -6,7 +6,7 @@ const socketIO = require('socket.io');
 const moment = require('moment');
 const mongodb = require('mongodb');
 const mongoClient = mongodb.MongoClient;
-const dbURL = 'mongodb://localhost:27017/speakEASY';
+const dbURL = 'mongodb://admin:password@ds139937.mlab.com:39937/speakeasy';
 var db;
 
 const { generateMessage, generateLocation } = require('./utils/message');
