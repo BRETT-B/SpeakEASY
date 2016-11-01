@@ -10,6 +10,7 @@ $(document).ready(function() {
     var infoWindowWidth = $('#info-window').width()
     var socket = io();
     $('#info-window').addClass('hideDiv');
+
     function scrollMessages() {
         // selectors
         var messages = $('#messages');
@@ -112,7 +113,7 @@ $(document).ready(function() {
             };
             map = new google.maps.Map(document.getElementById("map"),
                 mapOptions);
-            fetch('https://stark-reaches-93085.herokuapp.com/js/geolocation/speakeasy.json')
+            fetch('https://raw.githubusercontent.com/BRETT-B/SpeakEASY/master/public/js/geolocation/speakeasy.json')
                 .then(function(response) {
                     return response.json()
                 })
@@ -131,11 +132,12 @@ $(document).ready(function() {
                 };
                 map = new google.maps.Map(document.getElementById("map"),
                     mapOptions);
-                fetch('https://stark-reaches-93085.herokuapp.com/js/geolocation/speakeasy.json')
-                    .then(function(response) {
-                        return response.json()
-                    })
-                    .then(plotMarkers);
+                // fetch('https://raw.githubusercontent.com/BRETT-B/SpeakEASY/master/public/js/geolocation/speakeasy.json')
+                $.getJSON('http://localhost:3000/getData', function(data) {
+                    console.log(dataplotMarkers(data);
+                });
+                
+                
             });
         } else {
             return alert('Geolocation not supported by your current browser');
@@ -163,8 +165,8 @@ $(document).ready(function() {
                 title: title
             });
             var contentString = '<div id="title-container" class="container-fluid" />' +
-                '<a href="chat.html?name='+encodeURI(name)+'&room='+encodeURI(title)+'#" target="_blank">' +
-                '<h4 id="info-title" style="width:'+infoWindowWidth+'px" class="h4-responsive font-italic text-xs-center">'+title+'</h4></a><h6 class="h6-responsive text-xs-center p-t-3">est. '+est+'</h6></div><div id="info-text" class="text-justify p-a-1"><p>'+info+'</p><p>'+entry+'</p></div>';
+                '<a href="chat.html?name=' + encodeURI(name) + '&room=' + encodeURI(title) + '#" target="_blank">' +
+                '<h4 id="info-title" style="width:' + infoWindowWidth + 'px" class="h4-responsive font-italic text-xs-center">' + title + '</h4></a><h6 class="h6-responsive text-xs-center p-t-3">est. ' + est + '</h6></div><div id="info-text" class="text-justify p-a-1"><p>' + info + '</p><p>' + entry + '</p></div>';
             markers.push(
                 new google.maps.Marker({
                     position: current,
@@ -174,8 +176,8 @@ $(document).ready(function() {
             markers.push(speakeasy);
             speakeasy.addListener('click', function() {
                 $('#map').removeClass('noInfo');
-                infoDiv.removeClass('hideDiv');
                 infoDiv.html(contentString);
+                infoDiv.removeClass('hideDiv');
             });
 
             bounds.extend(position);

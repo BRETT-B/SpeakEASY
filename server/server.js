@@ -1,6 +1,7 @@
 const path = require('path');
 const http = require('http');
-const ex = require('express');
+const express = require('express');
+var router = express.Router();
 const socketIO = require('socket.io');
 
 const mongodb = require('mongodb');
@@ -17,7 +18,8 @@ const publicPath = path.join(__dirname, '../public');
 // Set up a environment variable for Heroku
 const port = process.env.PORT || 3000;
 // Create a app variable to configure Express application
-var app = ex();
+var app = express();
+app.use('/', router);
 // Create a server using http library
 var server = http.createServer(app);
 // Configure a web socket server
@@ -25,17 +27,21 @@ var io = socketIO(server);
 // Create new instance of Users
 var patrons = new Patrons();
 // Config Express static middleware
-app.use(ex.static(publicPath));
-
+app.use(express.static(publicPath));
+var speakeasyData;
 mongoClient.connect(dbURL, function(error, database){
     if(error){
         console.log(error); //Print out the error because there is one
     }else{
         db = database; //Set the database object that was passed back to our callback, to our global db.
         console.log("Connected to Mongo successfully.");
+        speakeasyData = db.collection('localeData');
+        console.log(speakeasyData)
     }
 });
-
+router.get('/getData', (req, res, next) => {
+    speakeasyData.find({}).toArray((err, speakJSON) => res.json(speakJSON));
+});
 io.on('connection', (socket) => {
     console.log('New client connection opened');
 
