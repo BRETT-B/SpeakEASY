@@ -34,34 +34,33 @@ button {
 button:hover {
   border: none;
   color: white;
-  padding: 10px;
 }
 
-/* line 35, ../compass/sass/styles.scss */
+/* line 34, ../compass/sass/styles.scss */
 button:disabled {
   cursor: wait !important;
   background: #999 !important;
 }
 
-/* line 40, ../compass/sass/styles.scss */
+/* line 39, ../compass/sass/styles.scss */
 button#send-location:disabled {
   background: #999 !important;
 }
 
-/* line 44, ../compass/sass/styles.scss */
+/* line 43, ../compass/sass/styles.scss */
 #info-window {
   height: 30vh;
   overflow-y: scroll;
   border: 3px ridge #999;
 }
-/* line 48, ../compass/sass/styles.scss */
+/* line 47, ../compass/sass/styles.scss */
 #info-window h4 {
   position: fixed;
   border-bottom: 1px solid #999;
   background: rgba(232, 210, 155, 0.9);
 }
 
-/* line 55, ../compass/sass/styles.scss */
+/* line 54, ../compass/sass/styles.scss */
 .centered-form {
   display: flex;
   align-items: center;
@@ -70,7 +69,7 @@ button#send-location:disabled {
   justify-content: center;
 }
 
-/* line 63, ../compass/sass/styles.scss */
+/* line 62, ../compass/sass/styles.scss */
 .centered-form__form {
   background: rgba(250, 250, 250, 0.9);
   border: 1px solid #e1e1e1;
@@ -80,45 +79,45 @@ button#send-location:disabled {
   width: 230px;
 }
 
-/* line 72, ../compass/sass/styles.scss */
+/* line 71, ../compass/sass/styles.scss */
 .form-field {
   margin: 20px 0;
 }
-/* line 74, ../compass/sass/styles.scss */
+/* line 73, ../compass/sass/styles.scss */
 .form-field > * {
   width: 100%;
 }
-/* line 77, ../compass/sass/styles.scss */
+/* line 76, ../compass/sass/styles.scss */
 .form-field label {
   display: block;
   margin-bottom: 7px;
 }
-/* line 81, ../compass/sass/styles.scss */
+/* line 80, ../compass/sass/styles.scss */
 .form-field input,
 .form-field select {
   padding: 10px;
 }
 
-/* line 87, ../compass/sass/styles.scss */
+/* line 86, ../compass/sass/styles.scss */
 .chat {
   display: flex;
 }
 
-/* line 91, ../compass/sass/styles.scss */
+/* line 90, ../compass/sass/styles.scss */
 .sidebar {
   overflow-y: scroll;
   height: 100vh;
 }
-/* line 94, ../compass/sass/styles.scss */
+/* line 93, ../compass/sass/styles.scss */
 .sidebar h3 {
   margin: 10px 20px;
   text-align: left;
 }
-/* line 98, ../compass/sass/styles.scss */
+/* line 97, ../compass/sass/styles.scss */
 .sidebar ul {
   list-style-type: none;
 }
-/* line 101, ../compass/sass/styles.scss */
+/* line 100, ../compass/sass/styles.scss */
 .sidebar li {
   background: #e6eaee;
   border: 1px solid #e1e1e1;
@@ -127,7 +126,7 @@ button#send-location:disabled {
   margin: 10px;
 }
 
-/* line 110, ../compass/sass/styles.scss */
+/* line 109, ../compass/sass/styles.scss */
 .chat-main {
   display: flex;
   flex-direction: column;
@@ -135,85 +134,85 @@ button#send-location:disabled {
   width: 100%;
 }
 
-/* line 117, ../compass/sass/styles.scss */
+/* line 116, ../compass/sass/styles.scss */
 .chat-messages {
   flex-grow: 1;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
 
-/* line 123, ../compass/sass/styles.scss */
+/* line 122, ../compass/sass/styles.scss */
 .chat-footer {
   background: #e6eaee;
   display: flex;
   padding: 10px;
   flex-shrink: 0;
 }
-/* line 128, ../compass/sass/styles.scss */
+/* line 127, ../compass/sass/styles.scss */
 .chat-footer form {
   flex-grow: 1;
   display: flex;
 }
-/* line 131, ../compass/sass/styles.scss */
+/* line 130, ../compass/sass/styles.scss */
 .chat-footer form * {
   margin-right: 5px;
 }
-/* line 135, ../compass/sass/styles.scss */
+/* line 134, ../compass/sass/styles.scss */
 .chat-footer input {
   border: none;
   padding: 10px;
   flex-grow: 1;
 }
 
-/* line 142, ../compass/sass/styles.scss */
+/* line 141, ../compass/sass/styles.scss */
 .chat-messages {
   list-style-type: none;
   padding: 10px;
 }
 
-/* line 147, ../compass/sass/styles.scss */
+/* line 146, ../compass/sass/styles.scss */
 .message {
   padding: 10px;
 }
 
-/* line 151, ../compass/sass/styles.scss */
+/* line 150, ../compass/sass/styles.scss */
 .message-title {
   display: flex;
   margin-bottom: 5px;
 }
-/* line 154, ../compass/sass/styles.scss */
+/* line 153, ../compass/sass/styles.scss */
 .message-title h4 {
   font-weight: 600;
   margin-right: 10px;
 }
-/* line 158, ../compass/sass/styles.scss */
+/* line 157, ../compass/sass/styles.scss */
 .message-title span {
   color: #999;
 }
 
-/* line 162, ../compass/sass/styles.scss */
+/* line 161, ../compass/sass/styles.scss */
 .noInfo {
   height: 100vh !important;
 }
 
-/* line 165, ../compass/sass/styles.scss */
+/* line 164, ../compass/sass/styles.scss */
 .hideDiv {
   display: none !important;
 }
 
-/* line 169, ../compass/sass/styles.scss */
+/* line 168, ../compass/sass/styles.scss */
 #map {
   height: 70vh;
   border: 3px ridge #999;
   border-bottom: none;
 }
 
-/* line 175, ../compass/sass/styles.scss */
+/* line 174, ../compass/sass/styles.scss */
 #home {
   padding-top: 1rem;
 }
 
-/* line 179, ../compass/sass/styles.scss */
+/* line 178, ../compass/sass/styles.scss */
 hr.style {
   height: 30px;
   border-style: solid;
@@ -222,7 +221,7 @@ hr.style {
   border-radius: 20px;
 }
 
-/* line 187, ../compass/sass/styles.scss */
+/* line 186, ../compass/sass/styles.scss */
 hr.style:before {
   display: block;
   content: "";
@@ -235,32 +234,32 @@ hr.style:before {
 }
 
 @media (max-width: 600px) {
-  /* line 199, ../compass/sass/styles.scss */
+  /* line 198, ../compass/sass/styles.scss */
   * {
     font-size: 1rem;
   }
 
-  /* line 202, ../compass/sass/styles.scss */
+  /* line 201, ../compass/sass/styles.scss */
   .chat-footer {
     flex-direction: column;
   }
 
-  /* line 205, ../compass/sass/styles.scss */
+  /* line 204, ../compass/sass/styles.scss */
   .chat-footer form {
     margin-bottom: 10px;
   }
 
-  /* line 208, ../compass/sass/styles.scss */
+  /* line 207, ../compass/sass/styles.scss */
   .chat-footer button {
     margin-right: 0px;
   }
 
-  /* line 211, ../compass/sass/styles.scss */
+  /* line 210, ../compass/sass/styles.scss */
   #map {
     width: 100%;
   }
 }
-/* line 216, ../compass/sass/styles.scss */
+/* line 215, ../compass/sass/styles.scss */
 html,
 body,
 .view {
@@ -268,45 +267,45 @@ body,
 }
 
 /* Navigation*/
-/* line 225, ../compass/sass/styles.scss */
+/* line 224, ../compass/sass/styles.scss */
 .scrolling-navbar {
   transition: background .5s ease-in-out, padding .5s ease-in-out;
 }
 
-/* line 229, ../compass/sass/styles.scss */
+/* line 228, ../compass/sass/styles.scss */
 .top-nav-collapse {
   background-color: #1C2331;
 }
 
 /*Call to action*/
-/* line 236, ../compass/sass/styles.scss */
+/* line 235, ../compass/sass/styles.scss */
 .flex-center {
   color: #fff;
 }
 
-/* line 240, ../compass/sass/styles.scss */
+/* line 239, ../compass/sass/styles.scss */
 .view {
   background: url("../img/background.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 
-/* line 245, ../compass/sass/styles.scss */
+/* line 244, ../compass/sass/styles.scss */
 .navbar.fa {
   color: darkgoldenrod;
 }
 
-/* line 249, ../compass/sass/styles.scss */
+/* line 248, ../compass/sass/styles.scss */
 .navbar {
   border: none !important;
   box-shadow: none !important;
 }
 
-/* line 254, ../compass/sass/styles.scss */
+/* line 253, ../compass/sass/styles.scss */
 .nav-link {
   color: darkgoldenrod !important;
 }
 
-/* line 258, ../compass/sass/styles.scss */
+/* line 257, ../compass/sass/styles.scss */
 .navbar-brand {
   z-index: -1;
   position: absolute;
@@ -316,34 +315,34 @@ body,
   margin: 0 auto;
 }
 
-/* line 267, ../compass/sass/styles.scss */
+/* line 266, ../compass/sass/styles.scss */
 .navbar-brand > img {
   display: inline;
 }
 
-/* line 271, ../compass/sass/styles.scss */
+/* line 270, ../compass/sass/styles.scss */
 .join {
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* line 275, ../compass/sass/styles.scss */
+/* line 274, ../compass/sass/styles.scss */
 .modal-content {
   border-radius: 1rem;
   background: rgba(255, 255, 255, 0.7);
 }
 
-/* line 280, ../compass/sass/styles.scss */
+/* line 279, ../compass/sass/styles.scss */
 .modal-header {
   border: none;
 }
 
 @media (max-width: 768px) {
-  /* line 285, ../compass/sass/styles.scss */
+  /* line 284, ../compass/sass/styles.scss */
   .navbar {
     background-color: #1C2331;
   }
 
-  /* line 288, ../compass/sass/styles.scss */
+  /* line 287, ../compass/sass/styles.scss */
   .navbar-brand {
     display: none;
   }

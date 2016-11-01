@@ -11,6 +11,9 @@ $(document).ready(function() {
     var socket = io();
     $('#info-window').addClass('hideDiv');
 
+    var messageSound = document.getElementById('messageSound');
+    messageSound.src = '/public/sounds/clink.wav';
+
     function scrollMessages() {
         // selectors
         var messages = $('#messages');
