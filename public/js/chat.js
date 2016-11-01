@@ -46,6 +46,7 @@ $(document).ready(function() {
         $('#patrons').html(ul);
     });
     socket.on('newMessage', function(message) {
+        console.log(message);
         var formattedTime = moment(message.timestamp).format('h:mm a');
         var template = $('#message-template').html();
         var html = Mustache.render(template, {
@@ -134,7 +135,7 @@ $(document).ready(function() {
                     mapOptions);
                 // fetch('https://raw.githubusercontent.com/BRETT-B/SpeakEASY/master/public/js/geolocation/speakeasy.json')
                 $.getJSON('http://localhost:3000/getData', function(data) {
-                    console.log(dataplotMarkers(data);
+                    plotMarkers(data);
                 });
                 
                 

@@ -1,10 +1,13 @@
 var moment = require('moment');
 
-var generateMessage = (from, text) => {
+var generateMessage = (from, text, timestamp) => {
+	if (!timestamp) {
+		timestamp = moment().valueOf();
+	}
 	return {
 		from,
 		text,
-		timestamp: moment().valueOf()
+		timestamp
 	};
 };
 var generateLocation = (from, latitude, longitude) => {

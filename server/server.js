@@ -3,7 +3,7 @@ const http = require('http');
 const express = require('express');
 var router = express.Router();
 const socketIO = require('socket.io');
-
+const moment = require('moment');
 const mongodb = require('mongodb');
 const mongoClient = mongodb.MongoClient;
 const dbURL = 'mongodb://localhost:27017/speakEASY';
@@ -61,6 +61,13 @@ io.on('connection', (socket) => {
         //socket.broadcast.emit - this sends the message to everyone except for the current user
         //socket.emit - sends to specifically one user
         // Emit message to welcome user from Admin
+        db.collection('roomMessages').find({
+            room: params.room
+        }).toArray((err, messagesFromDatabase) => {
+            messagesFromDatabase.forEach((message) => {
+                socket.emit('newMessage', generateMessage(message.from, message.message, message.timestamp));
+            })
+        });
         socket.emit('newMessage', generateMessage('Admin', `Welcome to ${chatroom} chatroom`));
         // Emit message to all sockets that user joined, excluding that user
         socket.broadcast.to(params.room).emit('newMessage', generateMessage('Admin', `${params.name} has joined`));
@@ -72,6 +79,15 @@ io.on('connection', (socket) => {
         var patron = patrons.getPatron(socket.id);
         if (patron && validString(message.text)) {
         	io.to(patron.room).emit('newMessage', generateMessage(patron.name, message.text));
+            try {db.collection('roomMessages').insertOne({
+                message: message.text,
+                from: patron.name,
+                room: patron.room,
+                timestamp: moment().valueOf()
+            })} catch (e) {
+                console.log(e);
+            }
+            
         }
         callback();
     });
