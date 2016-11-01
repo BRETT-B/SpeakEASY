@@ -119,7 +119,7 @@ $(document).ready(function() {
             //         return response.json()
             //     })
             //     .then(plotMarkers);
-            $.getJSON('http://localhost:3000/getData', function(data) {
+            $.getJSON('https://stark-reaches-93085.herokuapp.com/getData', function(data) {
                     plotMarkers(data);
                 });
         } else if (navigator.geolocation) {
@@ -137,7 +137,7 @@ $(document).ready(function() {
                 map = new google.maps.Map(document.getElementById("map"),
                     mapOptions);
                 // fetch('https://raw.githubusercontent.com/BRETT-B/SpeakEASY/master/public/js/geolocation/speakeasy.json')
-                $.getJSON('http://localhost:3000/getData', function(data) {
+                $.getJSON('https://stark-reaches-93085.herokuapp.com/getData', function(data) {
                     plotMarkers(data);
                 });
                 
