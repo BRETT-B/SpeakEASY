@@ -20,7 +20,7 @@ Full-Stack Web Application
 * Node.js server (sripts written using ES6)
 * Node modules used:
 	* mongodb
-	* soket.io
+	* socket.io
 	* mustache.js
 	* yargs
 	* express
