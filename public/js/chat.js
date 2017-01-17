@@ -28,6 +28,7 @@ $(document).ready(function() {
             messages.scrollTop(scrollHeight);
         }
     };
+    //New client connection to the server
     socket.on('connect', function() {
         socket.emit('join', params, function(error) {
             if (error) {
@@ -38,9 +39,11 @@ $(document).ready(function() {
             }
         });
     });
+    //Client disconnect
     socket.on('disconnect', function() {
         console.log('Disconnected from server')
     });
+    //Update Users list
     socket.on('updatePatronList', function(patrons) {
         var ul = $('<ul></ul>');
         patrons.forEach(function(patron) {

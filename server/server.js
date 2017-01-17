@@ -7,7 +7,7 @@ const   path            = require('path'),
         mongodb         = require('mongodb'),
         mongoClient     = mongodb.MongoClient,
         dbURL           = process.env.DATABASEURL;
-        
+
 var db;
 
 const { generateMessage, generateLocation } = require('./utils/message');
@@ -46,7 +46,6 @@ router.get('/getData', (req, res, next) => {
 io.on('connection', (socket) => {
     console.log('New client connection opened');
 
-
     socket.on('join', (params, callback) => {
         if (!validString(params.name) || !validString(params.room)) {
             return callback('Display Name & Room Name are Required')
@@ -59,7 +58,7 @@ io.on('connection', (socket) => {
         io.to(params.room).emit('updatePatronList', patrons.getPatronList(params.room))
         // socket.leave('')
         //io.emit - this emits to every single connected user (method to() which sends to the given argument)
-        //socket.broadcast.emit - this sends the message to everyone except for the current user
+        //socket.broadcast.emit - this sends the message to everyone except for the current user (or emitting socket)
         //socket.emit - sends to specifically one user
         // Emit message to welcome user from Admin
         db.collection('roomMessages').find({
