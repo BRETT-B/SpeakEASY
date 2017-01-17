@@ -1,12 +1,13 @@
-const path = require('path');
-const http = require('http');
-const express = require('express');
-var router = express.Router();
-const socketIO = require('socket.io');
-const moment = require('moment');
-const mongodb = require('mongodb');
-const mongoClient = mongodb.MongoClient;
-const dbURL = 'mongodb://admin:password@ds139937.mlab.com:39937/speakeasy';
+const   path            = require('path'),
+        http            = require('http'),
+        express         = require('express'),
+        router          = express.Router(),
+        socketIO        = require('socket.io'),
+        moment          = require('moment'),
+        mongodb         = require('mongodb'),
+        mongoClient     = mongodb.MongoClient,
+        dbURL           = process.env.DATABASEURL;
+        
 var db;
 
 const { generateMessage, generateLocation } = require('./utils/message');
